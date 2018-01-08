@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('clients', function () {
+    return '<h1>Lista de Cliente</h1>';
+});
+
+Route::get('clients/create/new', function () {
+    return '<h1>Criar Cliente</h1>';
+});

@@ -40,7 +40,7 @@ Route::prefix('treinaweb/clients')->group(function () {
 
     });
 
-    Route::put('save', function () {
+    Route::any('save', function () {
         return 'Cliente criado com sucesso';
     })->name('clients.save');
 

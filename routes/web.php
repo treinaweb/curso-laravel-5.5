@@ -22,3 +22,7 @@ Route::get('clients', function () {
 Route::get('clients/create/new', function () {
     return '<h1>Criar Cliente</h1>';
 });
+
+Route::get('clients/{name}/{age?}', function ($name, $age='nao definido') {
+    return "Detalhes do cliente {$name} ele tem {$age} anos";
+})->where(['age' => '[0-9]+', 'name' => '[A-Za-z]+']);

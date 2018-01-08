@@ -15,24 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('clients', function () {
-    return '<h1>Lista de Cliente</h1>';
-})->name('clientes');
+Route::prefix('treinaweb/clients')->group(function () {
+    
+    Route::get('/', function () {
+        return '<h1>Lista de Cliente</h1>';
+    })->name('clients.list');
 
-Route::get('clients/create/new', function () {
-    $html = '<h1>Criar Cliente</h1>';
+    Route::get('create/new', function () {
+        $html = '<h1>Criar Cliente</h1>';
 
-    $html .= '<br><a href="' . route('clientes') . '">Lista de clientes</a>';
+        $html .= '<br><a href="' . route('clients.list') . '">Lista de clientes</a>';
 
-    return $html;
+        return $html;
 
+    });
+
+    Route::get('{name}/{age?}', function ($name, $age='nao definido') {
+        $html = "Detalhes do cliente {$name} ele tem {$age} anos";
+        
+        $html .= '<br><a href="' . route('clients.list') . '">Lista de clientes</a>';
+        
+        return $html;
+
+    })->where(['age' => '[0-9]+', 'name' => '[A-Za-z]+']);
 });
-
-Route::get('clients/{name}/{age?}', function ($name, $age='nao definido') {
-    $html = "Detalhes do cliente {$name} ele tem {$age} anos";
-    
-    $html .= '<br><a href="' . route('clientes') . '">Lista de clientes</a>';
-    
-    return $html;
-
-})->where(['age' => '[0-9]+', 'name' => '[A-Za-z]+']);

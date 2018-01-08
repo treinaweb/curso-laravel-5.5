@@ -11,3 +11,5 @@
 
 @{{ cliente }}
 
+{{ $client }} - {{ $group }}
+

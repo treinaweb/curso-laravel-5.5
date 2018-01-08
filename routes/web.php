@@ -20,7 +20,11 @@ Route::redirect('cliente', 'treinaweb/clients', 301);
 Route::prefix('treinaweb/clients')->group(function () {
     
     Route::get('/', function () {
-        return view('clients.index');
+
+        $client = 'Maria';
+        $group  = 'Restaurante';
+
+        return view('clients.index', compact('client', 'group'));
     })->name('clients.list');
 
     Route::get('create/new', function () {

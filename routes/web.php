@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::redirect('cliente', 'treinaweb/clients', 301);
+
 Route::prefix('treinaweb/clients')->group(function () {
     
     Route::get('/', function () {

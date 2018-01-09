@@ -21,10 +21,10 @@ Route::prefix('treinaweb/clients')->group(function () {
     
     Route::get('/', function () {
 
-        $client = 'Maria';
-        $group  = 'Restaurante';
+        $clients = [];
+        $group  = 'Atacado';
 
-        return view('clients.index', compact('client', 'group'));
+        return view('clients.index', compact('clients', 'group'));
     })->name('clients.list');
 
     Route::get('create/new', function () {

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layout');
+    return view('helpers');
 });
 
 Route::redirect('cliente', 'treinaweb/clients', 301);
@@ -34,6 +34,10 @@ Route::prefix('treinaweb/clients')->group(function () {
     Route::any('save', function () {
         return 'Cliente criado com sucesso';
     })->name('clients.save');
+
+    Route::get('edit/{id}/{name}', function ($id, $name) {
+        return view('clients.form');
+    })->name('clients.edit');
 
     // Route::get('{name}/{age?}', function ($name, $age='nao definido') {
     //     $html = "Detalhes do cliente {$name} ele tem {$age} anos";

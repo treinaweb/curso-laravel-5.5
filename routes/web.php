@@ -21,7 +21,14 @@ Route::prefix('treinaweb/clients')->group(function () {
     
     Route::get('/', function () {
 
-        $clients = [];
+        // $joao = new \App\Client;
+        // $joao->name = "joao";
+        // $joao->email = "joao@asd.com";
+        // $joao->age = 24;
+        // $joao->save();
+
+        $clients = \App\Client::get();
+
         $group  = 'Atacado';
 
         return view('clients.index', compact('clients', 'group'));

@@ -19,20 +19,7 @@ Route::redirect('cliente', 'treinaweb/clients', 301);
 
 Route::prefix('treinaweb/clients')->group(function () {
     
-    Route::get('/', function () {
-
-        // $joao = new \App\Client;
-        // $joao->name = "joao";
-        // $joao->email = "joao@asd.com";
-        // $joao->age = 24;
-        // $joao->save();
-
-        $clients = \App\Client::get();
-
-        $group  = 'Atacado';
-
-        return view('clients.index', compact('clients', 'group'));
-    })->name('clients.list');
+    Route::get('/', 'ClientController@index')->name('clients.list');
 
     Route::get('create/new', function () {
         return view('clients.form');

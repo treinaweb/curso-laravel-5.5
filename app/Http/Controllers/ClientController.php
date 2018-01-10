@@ -17,4 +17,36 @@ class ClientController extends Controller
 
         return view('clients.index', compact('clients'));
     }
+    
+    /**
+     * Criar cliente
+     *
+     * @return void
+     */
+    public function create() 
+    {
+        return view('clients.form');
+    }
+
+    /**
+     * Salvar cliente
+     *
+     * @return void
+     */
+    public function save() 
+    {
+        return 'Cliente criado com sucesso';
+    }
+
+    /**
+     * Editar Cliente
+     *
+     * @param [type] $id
+     * @param [type] $name
+     * @return void
+     */
+    public function edit($id, $name) 
+    {
+        return view('clients.form');
+    }
 }

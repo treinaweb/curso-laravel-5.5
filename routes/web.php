@@ -45,3 +45,6 @@ Route::prefix('treinaweb/clients')->group(function () {
     //     return $html;
     // })->where(['age' => '[0-9]+', 'name' => '[A-Za-z]+']);
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,24 +1,25 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('titulo')
-    <h1>Teste de Helpers</h1>
-@endsection
 
-@section('conteudo')
+@section('content')
 
-  {{ route('clients.edit', ['id' => 20, 'name' => 'Elton']) }}
+  <div class="container">
+    {{ route('clients.edit', ['id' => 20, 'name' => 'Elton']) }}
 
-  <br>
+    <br>
+  
+    {{ str_after('Treinaweb cursos', 'Treinaweb') }}
+  
+    <br>
+  
+    {{ app_path('Http/Controllers/Controller.php') }}
+  
+    <br>
+  
+    {{ array_random(['Maria', 'João', 'Elton']) }}
+  </div>
 
-  {{ str_after('Treinaweb cursos', 'Treinaweb') }}
-
-  <br>
-
-  {{ app_path('Http/Controllers/Controller.php') }}
-
-  <br>
-
-  {{ array_random(['Maria', 'João', 'Elton']) }}
+  
 
 @endsection
 

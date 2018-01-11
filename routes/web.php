@@ -15,15 +15,7 @@ Route::get('/', function () {
     return view('helpers');
 });
 
-Route::redirect('cliente', 'treinaweb/clients', 301);
-
-Route::prefix('treinaweb/clients')->group(function () {
-    Route::get('/', 'ClientController@index')->name('clients.list');
-    Route::get('create/new', 'ClientController@create');
-    Route::any('save', 'ClientController@save')->name('clients.save');
-    Route::get('edit/{id}/{name}', 'ClientController@edit')->name('clients.edit');
-});
+Route::resource('clients', 'ClientController');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

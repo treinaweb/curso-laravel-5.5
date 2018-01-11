@@ -25,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "chegou no store";
     }
 
     /**
@@ -60,7 +60,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = \App\Client::find($id);
+
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -72,7 +74,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "estou no método update";
     }
 
     /**

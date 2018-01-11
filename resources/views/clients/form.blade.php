@@ -1,24 +1,24 @@
-@extends('layouts.app')
-
-
-@section('content')
-
-<div class="container">
-    <form action="<?= route('clients.save') ?>" method="POST">
-        <input type="hidden" name="_token" value="<?= csrf_token() ?>">
-        <input type="hidden" name="_method" value="PUT">
-        Nome: <input type="text" name="name"><br>
-        Idade: <input type="text" name="age"><br>
-        <input type="submit" value="Salvar">
-    </form>
-    
-        
-    <br>
-    <a href="<?= route('clients.list') ?>">Lista de clientes</a>
+<div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Nome</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{ @$client->name }}">
+    </div>
+</div>
+<div class="form-group">
+    <label for="email" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ @$client->email }}">
+    </div>
+</div>
+<div class="form-group">
+    <label for="age" class="col-sm-2 control-label">Idade</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="age" name="age" placeholder="Idade" value="{{ @$client->age }}">
+    </div>
 </div>
 
-
-
-@endsection
-
-
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <button type="submit" class="btn btn-default">Salvar</button>
+    </div>
+</div>

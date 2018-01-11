@@ -1,17 +1,40 @@
 @extends('layouts.app')
 
-@section('content')
+@section('titulo-pagina')
+    <h1>Lista de clientes</h1>
+@endsection
 
-  <div class="container">
-    @forelse ($clients as $client)
-      <p>ID do cliente: {{ $client->id }}</p>
-      <p>Nome do cliente: {{ $client->name }}</p>
-      <p>Email do Cliente: {{ $client->email }}</p>
-      <p>Idade do Cliente: {{ $client->age }}</p>
-    @empty
-      <p>Nenhum cliente cadastrado</p>
-    @endforelse
-  </div>
+@section('content')
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            @forelse ($clients as $client)
+              <tr>
+                <td>{{ $client->id }}</td>
+                <td>
+                  <a href="{{ route('clients.show', $client->id) }}">
+                    {{ $client->name }}
+                  </a>
+                </td>
+                <td>{{ $client->email }}</td>
+                <td></td>
+              </tr>
+            @empty
+              <tr><td>Nenhum cliente cadastrado</td></tr>
+            @endforelse
+          </tbody>
+        </table>
+      </div>
+    </div>
 @endsection
 
 

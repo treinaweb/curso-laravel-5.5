@@ -71,7 +71,17 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    @yield('titulo-pagina')
+                </div>
+            </div>
+
+            @yield('content')
+        </div>
+
+        
     </div>
 
     <!-- Scripts -->

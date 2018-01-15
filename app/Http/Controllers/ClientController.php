@@ -38,6 +38,11 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $client = new Client;
+
+        if ($request->hasFile('photo')) {
+            $client->photo = $request->photo->store('public');
+        }
+
         $client->name = $request->input("name");
         $client->email = $request->input("email");
         $client->age = $request->input("age");
@@ -82,6 +87,11 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::findOrFail($id);
+
+        if ($request->hasFile('photo')) {
+            $client->photo = $request->photo->store('public');
+        }
+
         $client->name = $request->input("name");
         $client->email = $request->input("email");
         $client->age = $request->input("age");

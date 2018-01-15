@@ -12,6 +12,12 @@
         <p>O email do cliente é {{ $client->email }}</p>
         <p>O idade do cliente é {{ $client->age }}</p>
 
+        <p>Foto do Cliente: </p>
+        <img src="{{ asset('storage/' . str_after($client->photo, 'public/')) }}" 
+             alt="" width="600" >
+
+        <br>     
+
         <a href="{{ route('clients.index') }}">Volta para a lista de clientes</a>
       </div>
     </div>

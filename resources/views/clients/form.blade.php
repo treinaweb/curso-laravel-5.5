@@ -16,6 +16,12 @@
         <input type="text" class="form-control" id="age" name="age" placeholder="Idade" value="{{ @$client->age }}">
     </div>
 </div>
+<div class="form-group">
+    <label for="photo" class="col-sm-2 control-label">Foto</label>
+    <div class="col-sm-10">
+        <input type="file" class="form-control" id="photo" name="photo">
+    </div>
+</div>
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

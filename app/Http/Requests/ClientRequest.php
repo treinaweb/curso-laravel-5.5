@@ -27,7 +27,7 @@ class ClientRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'name'  => ['required', 'max:100', 'min:3', new Dash],
+            'name'  => ['required', 'max:100', 'min:3', 'dash2:par1,par2,par3'],
             'email' => ['required', 'email', 'unique:clients'],
             'age'   => ['required', 'integer'],
             'photo' => ['required', 'mimes:jpeg,bmp,png']

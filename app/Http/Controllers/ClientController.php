@@ -14,15 +14,8 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $request->session()->put('cursos', ['Laravel', 'Slim']);
-        $request->session()->push('cursos', 'Silex');
-
-        $request->session()->flash('aviso', 'Novo cliente cadastrado');
-        $request->session()->flash('tipo', 'sucesso');
-
-
         $clients = Client::get();
 
         return view('clients.index', compact('clients'));
@@ -35,15 +28,6 @@ class ClientController extends Controller
      */
     public function create(Request $request)
     {
-        //$request->session()->reflash();
-        //$request->session()->keep(['aviso']);
-        echo session('aviso');
-
-        echo "<pre>";
-        print_r($request->session()->all());
-        echo "</pre>";
-
-
         return view('clients.create');
     }
 
@@ -64,7 +48,12 @@ class ClientController extends Controller
         $client->name = $request->input("name");
         $client->email = $request->input("email");
         $client->age = $request->input("age");
-        $client->save();
+        
+        if ($client->save()) {
+            $request->session()->flash('success', 'Cliente cadastrado com sucesso!');
+        } else {
+            $request->session()->flash('error', 'Erro ao cadastrar cliente');
+        }
         
         return redirect()->route('clients.index');
     }
@@ -120,7 +109,12 @@ class ClientController extends Controller
         $client->name = $request->input("name");
         $client->email = $request->input("email");
         $client->age = $request->input("age");
-        $client->save();
+
+        if ($client->save()) {
+            $request->session()->flash('success', 'Cliente atualizado com sucesso!');
+        } else {
+            $request->session()->flash('error', 'Erro ao atualizar cliente');
+        }
         
         return redirect()->route('clients.index');
     }
@@ -131,12 +125,16 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         $client = Client::findOrfail($id);
 
         if ($client->delete()) {
-            return redirect()->route('clients.index');
+            $request->session()->flash('success', 'Cliente deletado com sucesso!');
+        } else {
+            $request->session()->flash('error', 'Erro ao deletar cliente');
         }
+
+        return redirect()->route('clients.index');
     }
 }

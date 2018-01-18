@@ -14,8 +14,12 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->regenerate();
+        session(['cursos' => ['Laravel', 'Slim']]);
+
+
         $clients = Client::get();
 
         return view('clients.index', compact('clients'));

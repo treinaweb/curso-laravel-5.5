@@ -14,8 +14,11 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->put('cursos', ['Laravel', 'Slim']);
+        $request->session()->push('cursos', 'Silex');
+
         $clients = Client::get();
 
         return view('clients.index', compact('clients'));
@@ -26,8 +29,11 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        dd(session('cursos'));
+
+
         return view('clients.create');
     }
 

@@ -16,9 +16,7 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->regenerate();
-        session(['cursos' => ['Laravel', 'Slim']]);
-
+        var_dump(session('todotasks'));
 
         $clients = Client::get();
 

@@ -19,6 +19,10 @@ class ClientController extends Controller
         $request->session()->put('cursos', ['Laravel', 'Slim']);
         $request->session()->push('cursos', 'Silex');
 
+        $request->session()->flash('aviso', 'Novo cliente cadastrado');
+        $request->session()->flash('tipo', 'sucesso');
+
+
         $clients = Client::get();
 
         return view('clients.index', compact('clients'));
@@ -31,7 +35,13 @@ class ClientController extends Controller
      */
     public function create(Request $request)
     {
-        dd(session('cursos'));
+        //$request->session()->reflash();
+        //$request->session()->keep(['aviso']);
+        echo session('aviso');
+
+        echo "<pre>";
+        print_r($request->session()->all());
+        echo "</pre>";
 
 
         return view('clients.create');

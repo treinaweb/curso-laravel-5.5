@@ -37,6 +37,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        'alerttasks' => [
+            \App\Http\Middleware\NotHasAlert::class,
+            \App\Http\Middleware\HasAlert::class,
+        ],
+
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -56,8 +61,7 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'alerttasks' => \App\Http\Middleware\AlertTasks::class
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class
         //'checktasks' => \App\Http\Middleware\CheckTasks::class
     ];
 }

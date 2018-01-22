@@ -13,14 +13,21 @@ use App\Http\Middleware\CheckTasks;
 |
 */
 
-Route::get('/', function () {
-    return view('helpers');
+Route::group(['middleware' => ['alerttasks']], function() {
+
+    Route::get('/', function () {
+        return view('helpers');
+    });
+    
+    Route::resource('clients', 'ClientController');
+    
+    Route::get('tasks/add/{id}', 'ToDoTasksController@store');
+    Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware(CheckTasks::class);
+
 });
 
-Route::resource('clients', 'ClientController');
 
-Route::get('tasks/add/{id}', 'ToDoTasksController@store');
-Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware(CheckTasks::class);
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

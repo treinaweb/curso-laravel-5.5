@@ -27,16 +27,17 @@
                 </td>
                 <td>{{ $client->email }}</td>
                 <td>
-                  <a class="btn btn-success"  href="{{ route('clients.edit', $client->id) }}">Editar</a>
+                  @can('update-client', $client)
+                    <a class="btn btn-success"  href="{{ route('clients.edit', $client->id) }}">Editar</a>
 
-                  <form style="display: inline" action="{{ route('clients.destroy', $client->id) }}" method="post">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
+                    <form style="display: inline" action="{{ route('clients.destroy', $client->id) }}" method="post">
+                      {{ csrf_field() }}
+                      {{ method_field('DELETE') }}
 
-                    <button type="submit" class="btn btn-danger" 
-                        onclick="return confirm('Tem certeza que deseja remover o cliente?')">Deletar</button>
-                  </form>
-
+                      <button type="submit" class="btn btn-danger" 
+                          onclick="return confirm('Tem certeza que deseja remover o cliente?')">Deletar</button>
+                    </form>
+                  @endcan  
                 </td>
               </tr>
             @empty

@@ -8,6 +8,7 @@ use App\Client;
 use App\Services\Treinaweb;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
+use Illuminate\Validation\Factory;
 
 class ClientController extends Controller
 {
@@ -99,7 +100,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Validator::make($request->all(), [
+        app(Factory::class)->make($request->all(), [
             'name' => ['required', 'max:100', 'min:3'],
             'email' => ['required', 'email', 'unique:clients'],
             'age' => ['required', 'integer'],

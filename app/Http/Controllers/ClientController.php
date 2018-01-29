@@ -11,14 +11,6 @@ use App\Http\Requests\ClientRequest;
 
 class ClientController extends Controller
 {
-    protected $treina;
-
-
-    public function __construct(Treinaweb $treina)
-    {
-        $this->treina = $treina;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +18,6 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        dd($this->treina);
-
         var_dump(session('todotasks'));
 
         $clients = Client::get();

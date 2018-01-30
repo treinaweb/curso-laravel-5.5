@@ -12,12 +12,14 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        Client::insert([
-            'name'      => str_random(10),
-            'email'     => str_random(11) . "@" . str_random(7) . '.' . str_random(3),
-            'age'       => rand(0, 100),
-            'photo'     => str_random(100),
-            'user_id'   => 1
-        ]);
+        // Client::insert([
+        //     'name'      => str_random(10),
+        //     'email'     => str_random(11) . "@" . str_random(7) . '.' . str_random(3),
+        //     'age'       => rand(0, 100),
+        //     'photo'     => str_random(100),
+        //     'user_id'   => 1
+        // ]);
+
+        factory(Client::class, 3)->create();
     }
 }

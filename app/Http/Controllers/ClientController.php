@@ -66,26 +66,22 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
-        $client = Client::findOrFail($id);
-
         return view('clients.show', compact('client'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        $client = Client::findOrFail($id);
-
         $this->authorize('update-client', $client);
 
         return view('clients.edit', compact('client'));
@@ -95,10 +91,10 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Factory $validator, Request $request, $id)
+    public function update(Factory $validator, Request $request, Client $client)
     {
         $validator->make($request->all(), [
             'name' => ['required', 'max:100', 'min:3'],
@@ -106,8 +102,6 @@ class ClientController extends Controller
             'age' => ['required', 'integer'],
             'photo' => ['mimes:jpeg,bmp,png']
         ])->validate();
-
-        $client = Client::findOrFail($id);
 
         $this->authorize('update-client', $client);
 
@@ -131,13 +125,11 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
+    public function destroy(Client $client, Request $request)
     {
-        $client = Client::findOrfail($id);
-
         $this->authorize('update-client', $client);
 
         if ($client->delete()) {

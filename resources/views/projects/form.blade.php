@@ -11,6 +11,18 @@
     </div>
 </div>
 <div class="form-group">
+    <label for="client_id" class="col-sm-2 control-label">Cliente</label>
+    <div class="col-sm-10">
+    <select type="text" class="form-control" id="client_id" name="client_id">
+        <option value="">Selecione o cliente</option>
+
+        @foreach ($clients as $client)
+            <option value="{{ $client->id }}" {{ @$project->client_id == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
+        @endforeach
+    </select>
+    </div>
+</div>
+<div class="form-group">
     <label for="description" class="col-sm-2 control-label">Descrição</label>
     <div class="col-sm-10">
         <textarea class="form-control" id="description" name="description" placeholder="Descrição">{{ @$project->description }}</textarea>

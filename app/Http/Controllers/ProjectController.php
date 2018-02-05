@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
@@ -28,7 +29,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $clients = Client::get();
+
+        return view('projects.create', compact('clients'));
     }
 
     /**
@@ -39,9 +42,9 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
-        $result = Project::create($request->all());
+        $project = Project::create($request->all());
 
-        if ($result) {
+        if ($project) {
             $request->session()->flash('success', 'Projeto cadastrado com sucesso!');
         } else {
             $request->session()->flash('error', 'Erro ao cadastrar projeto');
@@ -69,7 +72,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        $clients = Client::get();
+
+        return view('projects.edit', compact('project', 'clients'));
     }
 
     /**

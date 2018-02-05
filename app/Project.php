@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'cost', 'description'];
+    protected $fillable = ['name', 'cost', 'description', 'client_id'];
     
     /**
      * método da relação

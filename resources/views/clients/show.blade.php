@@ -16,7 +16,18 @@
         <img src="{{ asset('storage/' . str_after($client->photo, 'public/')) }}" 
              alt="" width="600" >
 
-        <br>     
+        <br>  
+        
+        <p>
+          Projetos do cliente:
+
+          @forelse ($client->projects as $project)
+              <p>{{ $project->name }}</p>
+          @empty
+              <p>Não tem projeto</p>
+          @endforelse
+
+        </p>
 
         <a href="{{ route('clients.index') }}">Volta para a lista de clientes</a>
       </div>

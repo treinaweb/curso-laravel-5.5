@@ -10,6 +10,13 @@ class Client extends Model
 
     //protected $guarded = ['_token'];
 
-
-    //
+    /**
+     * método da relação
+     *
+     * @return void
+     */
+    public function projects()
+    {
+        return $this->hasMany('App\Project');
+    }
 }

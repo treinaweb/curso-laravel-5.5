@@ -12,6 +12,7 @@
             <tr>
               <th>Id</th>
               <th>Nome</th>
+              <th>Cliente</th>
               <th>Descrição</th>
               <th>Ações</th>
             </tr>
@@ -25,6 +26,9 @@
                     {{ $project->name }}
                   </a>
                 </td>
+
+                <td>{{ $project->client->name }}</td>
+
                 <td>{{ $project->description }}</td>
                 <td>
                     <a class="btn btn-success"  href="{{ route('projects.edit', $project->id) }}">Editar</a>

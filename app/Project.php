@@ -17,4 +17,14 @@ class Project extends Model
     {
         return $this->belongsTo('App\Client');
     }
+
+    /**
+     * método da relação N para N
+     *
+     * @return void
+     */
+    public function tasks()
+    {
+        return $this->belongsToMany('App\Task');
+    }
 }

@@ -48,6 +48,10 @@
           </tbody>
         </table>
 
+        <div class="row text-center">
+          {{ $projects->links() }}
+        </div>
+
         <a href="{{ route('projects.create') }}">Criar Projeto</a>
       </div>
     </div>

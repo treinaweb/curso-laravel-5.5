@@ -46,6 +46,10 @@
           </tbody>
         </table>
 
+        <div class="row text-center">
+          {{ $tasks->links() }}
+        </div>
+
         <a href="{{ route('tasks.create') }}">Criar Tarefa</a>
       </div>
     </div>

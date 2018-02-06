@@ -22,7 +22,7 @@ class ClientController extends Controller
     {
         var_dump(session('todotasks'));
 
-        $clients = Client::get();
+        $clients = Client::paginate(5);
 
         return view('clients.index', compact('clients'));
     }

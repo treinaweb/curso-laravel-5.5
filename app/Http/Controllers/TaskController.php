@@ -14,7 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = DB::table('tasks')->get();
+        $tasks = DB::table('tasks')->simplePaginate(1);
 
         return view('tasks.index', compact('tasks'));
     }

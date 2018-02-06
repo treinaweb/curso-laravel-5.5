@@ -37,7 +37,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = true;
+        $task = DB::table('tasks')->insert([
+            'subject'       => $request->subject,
+            'made'          => $request->made,
+            'description'   => $request->description,
+        ]);
 
         if ($task) {
             $request->session()->flash('success', 'Task cadastrada com sucesso!');
@@ -56,7 +60,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $task = DB::table('tasks')->where('id', '=', $id)->first();
+        $task = DB::table('tasks')->where('id', $id)->first();
 
         return view('tasks.show', compact('task'));
     }
@@ -69,7 +73,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = DB::table('tasks')->where('id', '=', $id)->first();
+        $task = DB::table('tasks')->where('id', $id)->first();
 
         return view('tasks.edit', compact('task'));
     }
@@ -83,7 +87,13 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = true;
+        $result = DB::table('tasks')
+                    ->where('id', $id)
+                    ->update([
+                        'subject'       => $request->subject,
+                        'made'          => $request->made,
+                        'description'   => $request->description,
+                    ]);
 
         if ($result) {
             $request->session()->flash('success', 'Tarefa atualizada com sucesso!');
@@ -100,9 +110,11 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        if (true) {
+        $result = DB::table('tasks')->where('id', $id)->delete();
+
+        if ($result) {
             $request->session()->flash('success', 'Tarefa deletada com sucesso!');
         } else {
             $request->session()->flash('error', 'Erro ao deletar tarefa');

@@ -38,6 +38,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('clients.index') }}">Clientes</a></li>
                         <li><a href="{{ route('projects.index') }}">Projetos</a></li>
+                        <li><a href="{{ route('tasks.index') }}">Tarefas</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

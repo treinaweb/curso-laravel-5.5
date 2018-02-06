@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo-pagina')
-    <h1>Detalhes do cliente</h1>
+    <h1>Detalhes do projeto</h1>
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
 
         </p>
 
-        <a href="{{ route('projects.index') }}">Volta para a lista de clientes</a>
+        <a href="{{ route('projects.index') }}">Volta para a lista de projetos</a>
       </div>
     </div>
 @endsection

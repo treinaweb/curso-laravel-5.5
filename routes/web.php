@@ -22,7 +22,8 @@ Route::group(['middleware' => ['alerttasks', 'auth']], function() {
     Route::get('clients/pdf', 'ExtraActions\ClientPdf');
     Route::resource('clients', 'ClientController');
     
-    Route::resource('projects', 'projectController');
+    Route::resource('projects', 'ProjectController');
+    Route::resource('tasks', 'TaskController');
 
     Route::get('tasks/add/{id}', 'ToDoTasksController@store');
     Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware(CheckTasks::class);

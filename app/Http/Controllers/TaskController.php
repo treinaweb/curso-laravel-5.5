@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\TaskRepositoryInterface;
 
 class TaskController extends Controller
 {
+
+    /**
+     *
+     * @param TaskRepositoryInterface $taskRepository
+     */
+    public function __construct(TaskRepositoryInterface $taskRepository)
+    {
+        $this->taskRepository = $taskRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = DB::table('tasks')->simplePaginate(1);
+        $tasks = $this->taskRepository->getAll();
 
         return view('tasks.index', compact('tasks'));
     }

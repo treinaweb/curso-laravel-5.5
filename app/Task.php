@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+
+    protected $fillable = ['subject', 'made', 'description'];
+
     /**
      * método da relação N para N
      *

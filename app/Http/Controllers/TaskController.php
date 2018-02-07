@@ -48,7 +48,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = DB::table('tasks')->insert([
+        $task = $this->taskRepository->create([
             'subject'       => $request->subject,
             'made'          => $request->made,
             'description'   => $request->description,
@@ -71,7 +71,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $task = DB::table('tasks')->where('id', $id)->first();
+        $task = $this->taskRepository->find($id);
 
         return view('tasks.show', compact('task'));
     }
@@ -84,7 +84,7 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = DB::table('tasks')->where('id', $id)->first();
+        $task = $this->taskRepository->find($id);
 
         return view('tasks.edit', compact('task'));
     }
@@ -98,9 +98,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = DB::table('tasks')
-                    ->where('id', $id)
-                    ->update([
+        $result = $this->taskRepository->update($id, [
                         'subject'       => $request->subject,
                         'made'          => $request->made,
                         'description'   => $request->description,
@@ -123,7 +121,7 @@ class TaskController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        $result = DB::table('tasks')->where('id', $id)->delete();
+        $result = $this->taskRepository->delete($id);
 
         if ($result) {
             $request->session()->flash('success', 'Tarefa deletada com sucesso!');

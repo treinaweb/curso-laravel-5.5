@@ -16,4 +16,19 @@ class TaskRepository extends QueryBuilderRepository implements TaskRepositoryInt
    */
   protected $table = 'tasks';
 
+  /**
+   * procura tarefa por assunto
+   *
+   * @param [type] $subject
+   * @return void
+   */
+  public function getBySubject($subject)
+  {
+    $subject = '%' . $subject . '%';
+
+    return \DB::table($this->table)
+              ->where('subject', 'like', $subject)
+              ->get();
+  }
+
 }

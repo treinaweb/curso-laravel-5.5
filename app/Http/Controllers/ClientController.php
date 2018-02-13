@@ -55,12 +55,12 @@ class ClientController extends Controller
         $data['photo'] = $request->photo->store('public');
         
         if (Client::create($data)) {
-            $request->session()->flash('success', 'Cliente cadastrado com sucesso!');
-        } else {
-            $request->session()->flash('error', 'Erro ao cadastrar cliente');
-        }
+            return redirect()->route('clients.index')
+                             ->with('success', 'Cliente cadastrado com sucesso!');
+        } 
         
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')
+                         ->with('error', 'Erro ao cadastrar cliente');
     }
 
     /**
@@ -112,12 +112,12 @@ class ClientController extends Controller
         }
 
         if ($client->update($data)) {
-            $request->session()->flash('success', 'Cliente atualizado com sucesso!');
-        } else {
-            $request->session()->flash('error', 'Erro ao atualizar cliente');
-        }
+            return redirect()->route('clients.index')
+                             ->with('success', 'Cliente atualizado com sucesso!');
+        } 
         
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')
+                         ->with('error', 'Erro ao atualizar cliente');
     }
 
     /**
@@ -126,16 +126,16 @@ class ClientController extends Controller
      * @param  Client $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client, Request $request)
+    public function destroy(Client $client)
     {
         $this->authorize('update-client', $client);
 
         if ($client->delete()) {
-            $request->session()->flash('success', 'Cliente deletado com sucesso!');
-        } else {
-            $request->session()->flash('error', 'Erro ao deletar cliente');
-        }
-
-        return redirect()->route('clients.index');
+            return redirect()->route('clients.index')
+                             ->with('success', 'Cliente deletado com sucesso!');
+        } 
+        
+        return redirect()->route('clients.index')
+                         ->with('error', 'Erro ao deletar cliente');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\ExtraActions;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 
-class ClientSearch extends Controller
+class TaskSearch extends Controller
 {
     /**
      * Show the profile for the given user.

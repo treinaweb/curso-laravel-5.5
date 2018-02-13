@@ -19,6 +19,7 @@ Route::group(['middleware' => ['alerttasks', 'auth']], function() {
         return view('helpers');
     });
     
+    Route::get('clients/photo/{client}', 'ExtraActions\ClientPhotoDownload')->name('clients.photo_download');
     Route::get('clients/pdf', 'ExtraActions\ClientPdf');
     Route::resource('clients', 'ClientController');
     

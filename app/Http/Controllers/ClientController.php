@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Auth;
 use Gate;
 use Validator;
@@ -45,6 +46,8 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
+        Log::info("O usuário " . Auth::user()->name . " criou um novo cliente");
+
         $data = $request->all();
         $data['user_id'] = Auth::User()->id;
         $data['photo'] = $request->photo->store('public');

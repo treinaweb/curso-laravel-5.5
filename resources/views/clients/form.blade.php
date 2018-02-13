@@ -1,19 +1,19 @@
 <div class="form-group">
     <label for="name" class="col-sm-2 control-label">Nome</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{ @$client->name }}">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{ old('name', @$client->name) }}">
     </div>
 </div>
 <div class="form-group">
     <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
-    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ @$client->email }}">
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email', @$client->email) }}">
     </div>
 </div>
 <div class="form-group">
     <label for="age" class="col-sm-2 control-label">Idade</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" id="age" name="age" placeholder="Idade" value="{{ @$client->age }}">
+        <input type="text" class="form-control" id="age" name="age" placeholder="Idade" value="{{ old('age', @$client->age) }}">
     </div>
 </div>
 <div class="form-group">

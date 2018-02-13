@@ -96,12 +96,17 @@ class ClientController extends Controller
      */
     public function update(Factory $validator, Request $request, Client $client)
     {
-        $validator->make($request->all(), [
+        $validator = $validator->make($request->all(), [
             'name' => ['required', 'max:100', 'min:3'],
             'email' => ['required', 'email', 'unique:clients'],
             'age' => ['required', 'integer'],
             'photo' => ['mimes:jpeg,bmp,png']
-        ])->validate();
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)
+                         ->withInput();
+        }
 
         $this->authorize('update-client', $client);
 

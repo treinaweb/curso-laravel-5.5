@@ -21,6 +21,8 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
+        Log::error("O usuário " . Auth::user()->name . " acessou a lista de clientes");
+
         var_dump(session('todotasks'));
 
         $clients = Client::paginate(5);

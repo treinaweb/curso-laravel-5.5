@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ExtraActions;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 
@@ -12,8 +13,8 @@ class TaskSearch extends Controller
      *
      * @return Response
      */
-    public function __invoke(TaskRepositoryInterface $taskRepository, $subject)
+    public function __invoke(TaskRepositoryInterface $taskRepository, Request $request)
     {
-      return $taskRepository->getBySubject($subject);
+      return $taskRepository->getBySubject($request->search);
     }
 }

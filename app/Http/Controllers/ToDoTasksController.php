@@ -17,6 +17,16 @@ class ToDoTasksController extends Controller
         $this->taskRepository = $taskRepository;
     }
 
+    public function index()
+    {
+        $ids = session('todotasks');
+
+        $tasks = $this->taskRepository->getByIds($ids);
+
+        return view('todo_tasks.index', compact('tasks'));
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,6 +60,6 @@ class ToDoTasksController extends Controller
 
         session(['todotasks' => $ids]);
 
-        return redirect()->route('clients.index');
+        return back();
     }
 }

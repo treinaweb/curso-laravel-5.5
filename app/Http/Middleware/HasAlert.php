@@ -22,7 +22,12 @@ class HasAlert
         if ($ids) {
             $tasks = count($ids);
 
-            $request->session()->flash('alert', "Você tem {$tasks} tarefas pendentes");
+            $link = vsprintf('<a href="%s">%s</a>', [
+                route('tasks.todo_index'),
+                '(Clique aqui para ver a lista)'
+            ]);
+
+            $request->session()->flash('alert', "Você tem {$tasks} tarefas para fazer. {$link}");
         } 
 
         return $response;

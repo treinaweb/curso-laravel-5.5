@@ -33,4 +33,11 @@ class EloquentTaskRepository extends EloquentRepository implements TaskRepositor
                 ->get();
   }
 
+  public function getByIds(array $ids) 
+  {
+    return $this->model
+                ->whereIn('id', $ids)
+                ->get();
+  }
+
 }

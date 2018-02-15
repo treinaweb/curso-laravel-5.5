@@ -77,7 +77,7 @@
 
             @if (session('alert'))
                 <div class="alert alert-info">
-                    {{ session('alert') }}
+                    {!! session('alert') !!}
                 </div>
             @endif
 

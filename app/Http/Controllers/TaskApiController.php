@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\TaskRepositoryInterface;
 
 class TaskApiController extends Controller
 {
+
+    /**
+     *
+     * @param TaskRepositoryInterface $taskRepository
+     */
+    public function __construct(TaskRepositoryInterface $taskRepository)
+    {
+        $this->taskRepository = $taskRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,7 @@ class TaskApiController extends Controller
      */
     public function index()
     {
-        //
+        return $this->taskRepository->getAll();
     }
 
     /**
@@ -35,7 +46,7 @@ class TaskApiController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->taskRepository->find($id);
     }
 
     /**

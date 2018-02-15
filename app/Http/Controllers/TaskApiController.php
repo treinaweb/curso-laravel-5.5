@@ -35,7 +35,13 @@ class TaskApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->taskRepository->create([
+            'subject'       => $request->subject,
+            'made'          => $request->made,
+            'description'   => $request->description
+        ]);
+
+        return response()->json($result, 201);
     }
 
     /**
@@ -58,7 +64,13 @@ class TaskApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->taskRepository->update($id, [
+            'subject'       => $request->subject,
+            'made'          => $request->made,
+            'description'   => $request->description
+        ]);
+
+        return response()->json($result, 200);
     }
 
     /**
@@ -69,6 +81,8 @@ class TaskApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->taskRepository->delete($id);
+
+        return response()->json($result, 204);
     }
 }

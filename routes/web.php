@@ -27,7 +27,7 @@ Route::group(['middleware' => ['alerttasks', 'auth']], function() {
     Route::resource('tasks', 'TaskController');
     Route::post('tasks/search', 'ExtraActions\TaskSearch');
 
-    Route::get('tasks/add/{id}', 'ToDoTasksController@store');
+    Route::get('tasks/add/{id}', 'ToDoTasksController@store')->name('tasks.add');
     Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware(CheckTasks::class);
 
 });

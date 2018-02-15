@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\TaskRepositoryInterface;
 
 class ToDoTasksController extends Controller
 {
+
+    /**
+     *
+     * @param TaskRepositoryInterface $taskRepository
+     */
+    public function __construct(TaskRepositoryInterface $taskRepository)
+    {
+        $this->taskRepository = $taskRepository;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -15,9 +25,13 @@ class ToDoTasksController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $request->session()->push('todotasks', $id);
+        if ($this->taskRepository->find($id)) {
+            $request->session()->push('todotasks', $id);
 
-        return redirect()->route('clients.index');
+            return back();
+        }
+
+        return back()->with('error', 'Não foi possível adicionar tarefa a lista de pendentes');
     }
 
     /**

@@ -7,12 +7,11 @@
 @section('content')
     <div class="row">
       <div class="col-md-12">
+        <p><a href="{{ route('tasks.add', $task) }}" class="btn btn-success">Adicionar a lista de tarefas pendentes</a></p>
         <p>O id da tarefa é: {{ $task->id }}</p>
         <p>O assunto da tarefa é: {{ $task->subject }}</p>
         <p>Tarefa executada: {{ $task->made ? 'Sim' : 'Não' }}</p>
         <p>O descrição da tarefa é: {{ $task->description }}</p>
-
-
         <a href="{{ route('tasks.index') }}">Volta para a lista de tarefas</a>
       </div>
     </div>

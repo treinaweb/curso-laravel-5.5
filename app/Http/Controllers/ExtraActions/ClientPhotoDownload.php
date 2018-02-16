@@ -14,7 +14,7 @@ class ClientPhotoDownload extends Controller
      */
     public function __invoke(Client $client)
     {
-      return response()->download(
+        return response()->download(
         storage_path('app/' . $client->photo)
       );
     }

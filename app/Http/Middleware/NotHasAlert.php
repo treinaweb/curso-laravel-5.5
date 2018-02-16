@@ -21,7 +21,7 @@ class NotHasAlert
 
         if (!$ids) {
             $request->session()->flash('alert', "Você não tem tarefas pendentes");
-        } 
+        }
 
         return $response;
     }

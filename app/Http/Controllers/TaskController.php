@@ -71,7 +71,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $projects   = \App\Project::get(); 
+        $projects   = \App\Project::get();
         $task = $this->taskRepository->find($id);
 
         return view('tasks.show', compact('task', 'projects'));

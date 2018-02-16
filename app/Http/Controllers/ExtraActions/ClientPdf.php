@@ -15,10 +15,10 @@ class ClientPdf extends Controller
      */
     public function __invoke()
     {
-      $clients = Client::get();
+        $clients = Client::get();
 
-      $pdf = PDF::loadView('clients.list_pdf', compact('clients'));
+        $pdf = PDF::loadView('clients.list_pdf', compact('clients'));
 
-      return $pdf->download('lista-de-clientes.pdf');
+        return $pdf->download('lista-de-clientes.pdf');
     }
 }

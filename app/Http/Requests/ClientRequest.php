@@ -39,7 +39,7 @@ class ClientRequest extends FormRequest
      *
      * @return void
      */
-    public function sanitize() 
+    public function sanitize()
     {
         $data = $this->all();
 
@@ -54,7 +54,7 @@ class ClientRequest extends FormRequest
      * @param [type] $validator
      * @return void
      */
-    // public function withValidator($validator) 
+    // public function withValidator($validator)
     // {
     //     $validator->after(function($validator) {
     //         if ($this->hasDash()) {
@@ -68,7 +68,7 @@ class ClientRequest extends FormRequest
      *
      * @return boolean
      */
-    public function hasDash() 
+    public function hasDash()
     {
         return strpos($this->name, '-');
     }
@@ -78,7 +78,7 @@ class ClientRequest extends FormRequest
      *
      * @return void
      */
-    public function messages() 
+    public function messages()
     {
         return [
             'name.required' => "O campo nome do cliente deve ser preenchido"

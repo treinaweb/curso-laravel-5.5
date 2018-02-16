@@ -55,7 +55,7 @@ class ClientController extends Controller
         if (Client::create($data)) {
             return redirect()->route('clients.index')
                              ->with('success', 'Cliente cadastrado com sucesso!');
-        } 
+        }
         
         return redirect()->route('clients.index')
                          ->with('error', 'Erro ao cadastrar cliente');
@@ -117,7 +117,7 @@ class ClientController extends Controller
         if ($client->update($data)) {
             return redirect()->route('clients.index')
                              ->with('success', 'Cliente atualizado com sucesso!');
-        } 
+        }
         
         return redirect()->route('clients.index')
                          ->with('error', 'Erro ao atualizar cliente');
@@ -136,7 +136,7 @@ class ClientController extends Controller
         if ($client->delete()) {
             return redirect()->route('clients.index')
                              ->with('success', 'Cliente deletado com sucesso!');
-        } 
+        }
         
         return redirect()->route('clients.index')
                          ->with('error', 'Erro ao deletar cliente');

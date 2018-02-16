@@ -6,38 +6,36 @@ use App\Task;
 use App\Repositories\Base\EloquentRepository;
 use App\Repositories\Interfaces\TaskRepositoryInterface;
 
-
 class EloquentTaskRepository extends EloquentRepository implements TaskRepositoryInterface
 {
 
   /**
    * @param Task $task
    */
-  public function __construct(Task $task)
-  {
-    $this->model = $task;
-  }
+    public function __construct(Task $task)
+    {
+        $this->model = $task;
+    }
 
-  /**
-   * procura tarefa por assunto
-   *
-   * @param [type] $subject
-   * @return void
-   */
-  public function getBySubject($subject)
-  {
-    $subject = '%' . $subject . '%';
+    /**
+     * procura tarefa por assunto
+     *
+     * @param [type] $subject
+     * @return void
+     */
+    public function getBySubject($subject)
+    {
+        $subject = '%' . $subject . '%';
 
-    return $this->model
+        return $this->model
                 ->where('subject', 'like', $subject)
                 ->get();
-  }
+    }
 
-  public function getByIds(array $ids) 
-  {
-    return $this->model
+    public function getByIds(array $ids)
+    {
+        return $this->model
                 ->whereIn('id', $ids)
                 ->get();
-  }
-
+    }
 }

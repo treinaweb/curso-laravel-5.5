@@ -7,7 +7,6 @@ use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 
-
 class ProjectController extends Controller
 {
     /**

@@ -28,7 +28,7 @@ class HasAlert
             ]);
 
             $request->session()->flash('alert', "Você tem {$tasks} tarefas para fazer. {$link}");
-        } 
+        }
 
         return $response;
     }

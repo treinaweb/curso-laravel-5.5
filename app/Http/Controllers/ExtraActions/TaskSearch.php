@@ -15,6 +15,6 @@ class TaskSearch extends Controller
      */
     public function __invoke(TaskRepositoryInterface $taskRepository, Request $request)
     {
-      return $taskRepository->getBySubject($request->search);
+        return $taskRepository->getBySubject($request->search);
     }
 }

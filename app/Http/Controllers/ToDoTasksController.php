@@ -78,7 +78,7 @@ class ToDoTasksController extends Controller
     {
         $ids = session('todotasks');
 
-        $ids = array_where($ids, function($value, $key) use ($id) {
+        $ids = array_where($ids, function ($value, $key) use ($id) {
             return $value != $id;
         });
 

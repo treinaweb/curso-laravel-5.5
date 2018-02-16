@@ -17,6 +17,11 @@ class ToDoTasksController extends Controller
         $this->taskRepository = $taskRepository;
     }
 
+    /**
+     * Lista as tarefas para fazer
+     *
+     * @return void
+     */
     public function index()
     {
         $ids = session('todotasks');
@@ -24,6 +29,25 @@ class ToDoTasksController extends Controller
         $tasks = $this->taskRepository->getByIds($ids);
 
         return view('todo_tasks.index', compact('tasks'));
+    }
+
+    /**
+     * Marca uma tarefa como feita
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function made($id)
+    {
+        $result = $this->taskRepository->update($id, [
+            'made' => 1
+        ]);
+
+        if ($result) {
+            return redirect()->route('tasks.todo_destroy', $id);
+        }
+
+        return back()->with('error', 'Erro ao marcar como executada a tarefa');
     }
 
 

@@ -32,6 +32,9 @@ Route::group(['middleware' => ['alerttasks', 'auth']], function() {
     Route::get('tasks/add/{id}', 'ToDoTasksController@store')->name('tasks.add');
     Route::get('tasks/delete/{id}', 'ToDoTasksController@destroy')->middleware(CheckTasks::class)->name('tasks.todo_destroy');
 
+    Route::post('tasks/project/attach/{task}', 'TaskProjectController@attach')->name('tasks.project_attach');
+    Route::get('tasks/project/detach/{task}/{project_id}', 'TaskProjectController@detach')->name('tasks.project_detach');
+
 });
 
 Auth::routes();

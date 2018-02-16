@@ -28,12 +28,12 @@
               <td>{{ $project->description }}</td>
               <td>
                   @if (!$task->made)
-                    <a class="btn btn-success"  href="#">Remover da tarefa</a>
+                    <a class="btn btn-success"  href="{{ route('tasks.project_detach', [$task, $project]) }}">Remover da tarefa</a>
                   @endif
               </td>
             </tr>
           @empty
-            <tr><td>Nenhum projeto cadastrado</td></tr>
+            <tr><td>Nenhum projeto relacionado</td></tr>
           @endforelse
         </tbody>
       </table>

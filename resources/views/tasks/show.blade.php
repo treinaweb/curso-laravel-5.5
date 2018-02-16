@@ -18,9 +18,15 @@
         <p>O assunto da tarefa é: {{ $task->subject }}</p>
         <p>Tarefa executada: {{ $task->made ? 'Sim' : 'Não' }}</p>
         <p>O descrição da tarefa é: {{ $task->description }}</p>
-        <a href="{{ route('tasks.index') }}">Volta para a lista de tarefas</a>
+        
       </div>
     </div>
+
+    @include('tasks.related_projects.index')
+
+    @include('tasks.related_projects.form')
+
+    <a href="{{ route('tasks.index') }}">Volta para a lista de tarefas</a>
 @endsection
 
 

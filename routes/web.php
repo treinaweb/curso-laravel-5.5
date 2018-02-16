@@ -15,9 +15,7 @@ use App\Http\Middleware\CheckTasks;
 
 Route::group(['middleware' => ['alerttasks', 'auth']], function() {
 
-    Route::get('/', function () {
-        return view('helpers');
-    });
+    Route::view('/', 'welcome');
     
     Route::get('clients/photo/{client}', 'ExtraActions\ClientPhotoDownload')->name('clients.photo_download');
     Route::get('clients/pdf', 'ExtraActions\ClientPdf');
@@ -38,4 +36,3 @@ Route::group(['middleware' => ['alerttasks', 'auth']], function() {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');

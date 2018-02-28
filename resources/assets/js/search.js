@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#task_search').keyup(function() {
     $.ajax({
 
-      url: "http://tasks.test/tasks/search",
+      url: "http://159.65.190.150/tasks/search",
 
       
 
@@ -22,12 +22,12 @@ $(document).ready(function() {
 
           items += '<tr>';
           items += '<td>' + id + '</td>';
-          items += '<td><a href="http://tasks.test/tasks/' + id  + '">' + result[i]['subject'] + '</a></td>';
+          items += '<td><a href="http://159.65.190.150/tasks/' + id  + '">' + result[i]['subject'] + '</a></td>';
           items += '<td>' + ((result[i]['made'] == 1) ? 'sim' : 'não') + '</td>';
           items += '<td>' + result[i]['description'] + '</td>';
 
           items += '<td>';
-          items += '<a class="btn btn-success"  href="http://tasks.test/tasks/' + id + '/edit">Editar</a>'
+          items += '<a class="btn btn-success"  href="http://159.65.190.150/tasks/' + id + '/edit">Editar</a>'
           items += '<a class="btn btn-danger">Deletar</a>'
           items += '<td>';
 
